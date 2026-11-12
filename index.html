@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adella Gustiarni Prameliana | Indonesian Linguistic Expert Portfolio</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1d1d1b;--muted:#5c5c57;--card:#fff;--line:#dcdcd4;--accent:#1f5f4a;--soft:#e9f2ee;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161715;--fg:#ececE6;--muted:#a3a39b;--card:#1e201d;--line:#34362f;--accent:#7fc9aa;--soft:#22302a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161715;--fg:#ececE6;--muted:#a3a39b;--card:#1e201d;--line:#34362f;--accent:#7fc9aa;--soft:#22302a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 56px}
+h1{font-size:2rem;margin:0;line-height:1.2}
+.role{color:var(--accent);font-weight:600;margin:.3rem 0}
+.meta{color:var(--muted);font-size:.92rem}
+.meta a{color:var(--accent)}
+.note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:.92rem;margin:18px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+nav a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.88rem;color:var(--fg);text-decoration:none;background:var(--card)}
+h2{font-size:1.3rem;margin:38px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:1.02rem;margin:22px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.row{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:9px 14px;border-top:1px solid var(--line);font-size:.95rem}
+.row:first-child{border-top:0}
+.row>b:first-child{color:var(--muted);font-weight:600}
+.ok{background:var(--soft)}
+.wide{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+ul{padding-left:20px}
+@media (max-width:560px){.row{grid-template-columns:1fr;gap:2px}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<main>
+<h1>Adella Gustiarni Prameliana</h1>
+<div class="role">Indonesian Linguistic Expert: LLM Evaluation, Editing, Annotation, Feedback</div>
+<div class="meta">Bandung, West Java, Indonesia · <a href="mailto:adellagp99@gmail.com">adellagp99@gmail.com</a> · <a href="https://linkedin.com/in/adellagp">linkedin.com/in/adellagp</a></div>
+<div class="note">Native Indonesian speaker (English: TOEFL equivalent 544) with 3+ years of professional experience writing and checking formal Indonesian documents. This portfolio shows how I evaluate model output with a clear rubric, edit to standard Indonesian (KBBI and EYD Edisi V), annotate grammar and meaning, and write feedback a research team can act on. The source texts are illustrative samples prepared for this application. Explanations are in English; examples are in Indonesian.</div>
+<nav><a href="#rubric">Rubric</a><a href="#eval">Evaluation</a><a href="#edit">Editing</a><a href="#annot">Annotation</a><a href="#feedback">Feedback</a></nav>
+
+<h2 id="rubric">1. Evaluation Rubric</h2>
+<p>Each response is scored from 1 (poor) to 5 (excellent), and every score is explained with the exact words that caused it.</p>
+<div class="card" id="rub"></div>
+
+<h2 id="eval">2. Evaluation of LLM-Generated Indonesian Text</h2>
+<div id="cases"></div>
+
+<h2 id="edit">3. Editing and Rewriting</h2>
+<div id="edits"></div>
+<p class="meta">Editing principle: fix errors and keep the writer’s voice. I do not make text more formal than its purpose requires.</p>
+
+<h2 id="annot">4. Linguistic Annotation</h2>
+<p class="meta">S = subject, P = predicate, O = object, Ket = adverbial.</p>
+<div class="wide"><table id="ann"></table></div>
+
+<h2 id="feedback">5. Sample Linguistic Feedback for AI Researchers</h2>
+<div class="wide"><table id="fb"></table></div>
+<h3>Recommendations for training and evaluation data</h3>
+<ul>
+<li>Add paired examples of standard and non-standard spelling (<i>risiko/resiko</i>, <i>silakan/silahkan</i>, <i>mengubah/merubah</i>) with the standard form marked as preferred.</li>
+<li>Include idioms and fixed expressions with natural Indonesian equivalents, so the model learns meaning instead of word-for-word translation.</li>
+<li>Add dialogue data across registers (formal, neutral, casual, regional) and test whether the model matches the user’s tone and pronouns.</li>
+<li>Evaluate summaries and translations on faithfulness separately from fluency, because fluent text can hide serious factual errors.</li>
+</ul>
+
+<h2>About My Approach</h2>
+<p>With professional experience writing and checking formal documents (management reports, meeting minutes, and regulatory licensing files), I focus on accuracy first, then standard language, then natural tone. I explain each judgement with specific evidence so that reviewers and researchers can verify and use it.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const rows=r=>r.map(x=>`<div class="row${x[2]?' ok':''}"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
+const tbl=(h,r)=>`<tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>`+r.map(a=>`<tr>${a.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("");
+
+$("rub").innerHTML=rows([
+["Accuracy","Meaning matches the source or instruction. No added, missing, or contradicted facts."],
+["Grammar","Standard affixation, word order, prepositions, spelling (KBBI, EYD Edisi V), punctuation."],
+["Fluency","Sounds like a native speaker wrote it; no translationese or English-style patterns."],
+["Register","Pronouns and word choice fit the situation (formal, neutral, casual) and the person addressed."]]);
+
+const cases=[
+["Case A: Translation (English to Indonesian)",[
+["Source","<i>The meeting has been postponed until further notice due to unforeseen circumstances.</i>"],
+["Model output","Pertemuan telah ditunda sampai pemberitahuan lebih lanjut karena keadaan yang <b>tidak terlihat</b>."],
+["Scores","Accuracy 2/5 · Grammar 5/5 · Fluency 3/5 · Register 4/5"],
+["Analysis","<b>Lexical error:</b> <i>unforeseen</i> means unexpected, but <i>tidak terlihat</i> means “not visible”, which changes the meaning. <b>Naturalness:</b> <i>sampai pemberitahuan lebih lanjut</i> follows the English word order; native writing uses <i>hingga ada pemberitahuan lebih lanjut</i>."],
+["Corrected","<b>Rapat ditunda hingga ada pemberitahuan lebih lanjut karena keadaan tak terduga.</b>",1]]],
+["Case B: Summarization",[
+["Source","Pemerintah Kota Sejahtera menambah 20 bus listrik untuk layanan angkutan massal mulai bulan depan. Penambahan ini bertujuan mengurangi kemacetan dan emisi karbon di pusat kota. Tarif tidak berubah."],
+["Model summary","Pemerintah Kota Sejahtera menambah 20 bus listrik bulan depan dan <b>menurunkan tarif</b> agar lebih banyak warga memakai angkutan umum."],
+["Scores","Accuracy 1/5 · Grammar 5/5 · Fluency 5/5 · Register 5/5"],
+["Analysis","<b>Hallucination:</b> the source says the fare does not change (<i>tarif tidak berubah</i>), but the summary says it is lowered. The stated purpose is also changed. The text is fluent, which makes the error easy to miss, so it is rated a serious failure despite perfect grammar."],
+["Corrected","<b>Pemerintah Kota Sejahtera menambah 20 bus listrik mulai bulan depan untuk mengurangi kemacetan dan emisi karbon di pusat kota; tarif tidak berubah.</b>",1]]],
+["Case C: Grammar correction",[
+["User request","Perbaiki kalimat ini: <i>Mereka sedang mendiskusikan tentang rencana liburan di akhir pekan.</i>"],
+["Model output","Mereka sedang berdiskusi <b>mengenai tentang</b> rencana liburan di akhir pekan."],
+["Scores","Accuracy 2/5 · Grammar 2/5 · Fluency 3/5 · Register 5/5"],
+["Analysis","<i>Mendiskusikan</i> already takes a direct object, so <i>tentang</i> is redundant. The model changed the verb but kept <i>tentang</i> and added <i>mengenai</i>, creating a <b>double preposition</b>. The error was not fixed and a new one was introduced."],
+["Corrected","<b>Mereka sedang mendiskusikan rencana liburan akhir pekan.</b> (or: <i>Mereka sedang berdiskusi tentang rencana liburan akhir pekan.</i>)",1]]],
+["Case D: Dialogue and register",[
+["User message","Bro, besok jadi ke kafe nggak? Gue udah laper nih."],
+["Model reply","Baik, <b>Bapak</b>. Saya akan berkonsultasi mengenai jadwal kunjungan ke kafe terlebih dahulu."],
+["Scores","Accuracy 2/5 · Grammar 5/5 · Fluency 2/5 · Register 1/5"],
+["Analysis","<b>Register mismatch:</b> the user writes casual Jakarta-style Indonesian (<i>bro, gue, nggak, laper</i>) to a friend, but the model replies in stiff formal language and calls the user <i>Bapak</i>. It also ignores the question. Regional note: <i>gue/lo</i> is Jakarta colloquial; the neutral informal pair is <i>aku/kamu</i>, so a model should not assume <i>gue</i> for every user."],
+["Corrected","<b>Jadi dong! Jam berapa? Aku juga udah lapar nih.</b> (mirrors the user’s tone without forcing a regional dialect)",1]]]
+];
+$("cases").innerHTML=cases.map(c=>`<h3>${c[0]}</h3><div class="card">${rows(c[1])}</div>`).join("");
+
+const edits=[
+["Sample 1: Formal notice",
+"Dengan ini kami informasikan bahwa untuk meeting <b>dimana</b> akan dilaksanakan hari Senin, <b>ruangan nya</b> sudah <b>di booking</b>. Mohon agar para peserta bisa hadir tepat waktu dan membawa <b>dokumen-dokumen</b> yang diperlukan. Apabila ada kendala <b>silahkan</b> menghubungi kami, terima kasih atas <b>perhatian nya</b>.",
+"<b>Dengan ini kami sampaikan bahwa ruang rapat untuk pertemuan pada hari Senin telah dipesan. Mohon para peserta hadir tepat waktu dan membawa dokumen yang diperlukan. Apabila ada kendala, silakan hubungi kami. Terima kasih atas perhatiannya.</b>",
+[["<i>dimana</i> removed","Calque from English <i>where</i>. <i>Di mana</i> is a question word or relative marker for places, not for events or times."],
+["<i>ruangan nya</i> to <i>ruang rapat</i>; <i>perhatian nya</i> to <i>perhatiannya</i>","The suffix <i>-nya</i> is attached to the word. <i>Ruang rapat</i> is a more precise formal term than <i>ruangan</i> plus English <i>meeting</i>."],
+["<i>di booking</i> to <i>dipesan</i>","The prefix <i>di-</i> attaches to a verb, and a standard Indonesian verb is preferred in formal writing."],
+["<i>silahkan</i> to <i>silakan</i>","Standard spelling per KBBI (root: <i>sila</i>). Comma added after the conditional clause."],
+["<i>dokumen-dokumen</i> to <i>dokumen</i>","Reduplication is unnecessary when plurality is clear from context (<i>para peserta</i>)."]]],
+["Sample 2: Semi-formal article",
+"<b>Merubah</b> kebiasaan memang tidak mudah, <b>tapi</b> hasilnya sangat berpengaruh terhadap kualitas hidup kita. Menurut para ahli, <b>resiko</b> penyakit bisa berkurang jika kita rutin berolahraga dan menjaga pola makan. Jadi, jangan <b>sekedar</b> menunda, mulailah dari sekarang!",
+"<b>Mengubah</b> kebiasaan memang tidak mudah, <b>tetapi</b> hasilnya sangat berpengaruh terhadap kualitas hidup kita. Menurut para ahli, <b>risiko</b> penyakit bisa berkurang jika kita rutin berolahraga dan menjaga pola makan. Jadi, jangan <b>sekadar</b> menunda; mulailah dari sekarang!",
+[["<i>merubah</i> to <i>mengubah</i>","The root is <i>ubah</i> (to change). <i>Rubah</i> is a different word meaning “fox”."],
+["<i>resiko</i> to <i>risiko</i>; <i>sekedar</i> to <i>sekadar</i>","Standard spellings per KBBI."],
+["<i>tapi</i> to <i>tetapi</i>","Keeps the tone semi-formal. <i>Bisa</i> and the exclamation were kept because the article is intentionally friendly."]]]
+];
+$("edits").innerHTML=edits.map(e=>`<h3>${e[0]}</h3><div class="card">${rows([["Before",e[1]],["After",e[2],1]])}</div><div class="wide"><table>${tbl(["Change","Reason"],e[3])}</table></div>`).join("");
+
+$("ann").innerHTML=tbl(["Sentence","Syntactic annotation","Semantic and morphological notes"],[
+["<i>Adik membaca buku di perpustakaan kemarin.</i>","Adik = S (noun) · membaca = P (transitive verb) · buku = O (noun) · di perpustakaan = Ket tempat · kemarin = Ket waktu","<i>membaca</i> = meN- + <i>baca</i>. Agent: <i>Adik</i>. Patient: <i>buku</i>. <i>Di</i> is written separately because it is a preposition."],
+["<i>Laporan itu sudah dikirim oleh bagian keuangan.</i>","Laporan itu = S (noun + determiner) · sudah dikirim = P (aspect marker + passive verb) · oleh bagian keuangan = agent phrase","Passive <i>di-</i>: the subject is the patient. Completed aspect (<i>sudah</i>). The <i>oleh</i> agent phrase is optional."],
+["<i>Kami mempertanggungjawabkan seluruh laporan tersebut.</i>","Kami = S (pronoun) · mempertanggungjawabkan = P (transitive verb) · seluruh laporan tersebut = O","<i>mem-per-…-kan</i> + compound <i>tanggung jawab</i>. A compound with both prefix and suffix is written as one word. <i>Kami</i> is exclusive (excludes the listener)."],
+["<i>Anak dosen yang pintar itu mendapat beasiswa.</i>","Anak dosen yang pintar itu = S (noun phrase) · mendapat = P · beasiswa = O","<b>Structural ambiguity:</b> <i>yang pintar</i> can describe the child or the lecturer. A: the lecturer has a smart child who got a scholarship. B: the smart lecturer has a child who got a scholarship."]]);
+
+$("fb").innerHTML=tbl(["Pattern","Model output","Issue and impact","Suggested fix"],[
+["English calque","Saya melihat ke depan untuk bertemu Anda.","Literal rendering of <i>look forward to</i>. Grammatical but unnatural. <b>Medium</b>.","Saya menantikan pertemuan dengan Anda."],
+["Literal idiom","Di luar hujan kucing dan anjing.","<i>Raining cats and dogs</i> has no meaning in Indonesian. <b>High</b> (meaning is lost).","Di luar hujan deras."],
+["Copula misuse","Ini adalah sangat penting.","<i>Adalah</i> is not used before an adjective; carried over from English <i>is</i>. <b>Medium</b>.","Ini sangat penting."],
+["Non-standard spelling","Silahkan isi formulir ini.","Very common online, so the model may have learned it as correct. <b>Low to medium</b>; suggest filtering from training data.","Silakan isi formulir ini."],
+["Register inconsistency","Aku akan segera menghubungi Anda.","Mixes casual <i>aku</i> with formal <i>Anda</i>. <b>Medium</b>.","Saya akan segera menghubungi Anda. (or: Aku akan segera menghubungimu.)"]]);
+</script>
+</body>
+</html>
